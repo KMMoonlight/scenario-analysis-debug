@@ -1,0 +1,30 @@
+ui:
+  default_width: 788.96875
+inputs_def:
+  - handle: equity_valuation_rows
+    json_schema:
+      type: array
+    value:
+      []
+  - handle: save_path
+    json_schema:
+      type: string
+      ui:widget: dir
+  - handle: equity_valuation_by_contrib_rows
+    json_schema:
+      type: array
+  - handle: pnl_info_rows
+    json_schema:
+      type: array
+  - handle: greeks_info_rows
+    json_schema:
+      type: array
+outputs_def:
+  []
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+icon: ":logos:python:"
+title: TransforToCSV

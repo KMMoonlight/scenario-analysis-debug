@@ -1,0 +1,19 @@
+ui:
+  default_width: 450
+inputs_def:
+  - handle: rows
+    json_schema:
+      type: array
+outputs_def:
+  - handle: rows
+    json_schema:
+      type: array
+      items:
+        type: array
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+icon: ":logos:python:"
+title: PreviewTable
