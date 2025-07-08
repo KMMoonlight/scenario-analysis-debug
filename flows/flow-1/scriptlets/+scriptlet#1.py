@@ -4,11 +4,25 @@ import requests
 import typing
 class Inputs(typing.TypedDict):
     Cookie: str
+    use_upload_file: bool
+    upload_file_path: str
 class Outputs(typing.TypedDict):
     result: typing.Any
 #endregion
 
 def main(params: Inputs, context: Context) -> Outputs:
+
+    use_local_file = params.get('use_upload_file', False)
+    local_file_path = params.get('upload_file_path', '')
+    if use_local_file:
+        with open(local_file_path, 'r') as f:
+            data = f.read()
+            result = {
+                "code": "success",
+                "data": data
+            }
+
+        
 
     Headers = {
         "Accept": "application/json, text/plain, */*",

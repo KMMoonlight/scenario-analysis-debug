@@ -9,6 +9,13 @@ nodes:
         - handle: Cookie
           json_schema:
             type: string
+        - handle: use_upload_file
+          json_schema:
+            type: boolean
+        - handle: upload_file_path
+          json_schema:
+            type: string
+            ui:widget: file
       outputs_def:
         - handle: result
           description: Output
@@ -20,11 +27,16 @@ nodes:
           entry: scriptlets/+scriptlet#1.py
     inputs_from:
       - handle: Cookie
+        value: cam_session=H8V7EkDxltLJsECsxlEwgwrZ60KHWA2bwgulLTXRHzfc5KDO66HkVOSd8rn5v3Wv;
+          devid=117d262e190043ed7848d7fd2c8d3cc6; browserupdateorg=pause
         schema_overrides:
           - schema:
               type: string
-        value: cam_session=H8V7EkDxltLJsECsxlEwgwrZ60KHWA2bwgulLTXRHzfc5KDO66HkVOSd8rn5v3Wv;
-          devid=117d262e190043ed7848d7fd2c8d3cc6; browserupdateorg=pause
+      - handle: use_upload_file
+        value: true
+      - handle: upload_file_path
+        value: /oomol-driver/oomol-storage/data.json
+    ignore: false
   - node_id: +python#2
     title: "数据处理"
     icon: ":logos:python:"

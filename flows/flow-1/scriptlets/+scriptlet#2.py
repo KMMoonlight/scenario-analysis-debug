@@ -29,7 +29,11 @@ def main(params: Inputs, context: Context) -> Outputs:
                 if row_index == row and column_index == column:
                     debug_info = cell.get('debug_info', {})
                     asset_info_list = json.loads(debug_info.get('asset_info', ''))
+                    if not asset_info_list:
+                        asset_info_list = []
                     position_info_list = json.loads(debug_info.get('position_info', ''))
+                    if not position_info_list:
+                        position_info_list = []
     
     equity_rows = []
     contrib_rows = []
