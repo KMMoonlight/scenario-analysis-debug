@@ -1,0 +1,52 @@
+{
+  "nodes": {
+    "+python#1": {
+      "contentWidth": 610.545372202946,
+      "rfNode": {
+        "position": {
+          "x": 171.35004947740916,
+          "y": -790.5356013079712
+        }
+      },
+      "sections": {
+        "scriptlet": {
+          "cardCollapsed": true,
+          "manualHeight": 445.39582849467627
+        }
+      }
+    },
+    "+python#2": {
+      "contentWidth": 446.77708254206743,
+      "rfNode": {
+        "position": {
+          "x": 192.82939631866805,
+          "y": -410.17157124523027
+        }
+      },
+      "sections": {
+        "scriptlet": {
+          "cardCollapsed": true,
+          "manualHeight": 488.921875
+        }
+      }
+    },
+    "TransforToCSV#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 2620.0032975500003,
+          "y": -711.1715712452303
+        }
+      }
+    },
+    "CustomPreviewTable#1": {
+      "contentWidth": 1544.5540780168603,
+      "rfNode": {
+        "position": {
+          "x": 879.7505456318431,
+          "y": -730.0884103949858
+        }
+      }
+    }
+  }
+}

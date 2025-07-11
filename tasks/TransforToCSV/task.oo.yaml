@@ -19,6 +19,14 @@ inputs_def:
   - handle: greeks_info_rows
     json_schema:
       type: array
+    value:
+      []
+  - handle: column
+    json_schema:
+      type: number
+  - handle: row
+    json_schema:
+      type: number
 outputs_def:
   []
 executor:

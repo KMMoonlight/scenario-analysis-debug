@@ -1,0 +1,24 @@
+{
+  "name": "oo-render",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@oomol/types": "latest",
+    "@types/node": "^20.17.57",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rollup-plugin-external-globals": "^0.13.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "ali-react-table": "^2.6.1"
+  }
+}

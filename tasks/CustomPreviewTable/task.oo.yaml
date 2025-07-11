@@ -1,0 +1,41 @@
+ui:
+  default_width: 450
+inputs_def:
+  - handle: equity_rows
+    json_schema:
+      type: array
+  - handle: contrib_rows
+    json_schema:
+      type: array
+  - handle: pnl_rows
+    json_schema:
+      type: array
+  - handle: greeks_rows
+    json_schema:
+      type: array
+outputs_def:
+  - handle: equity_rows
+    json_schema:
+      type: array
+  - handle: contrib_rows
+    json_schema:
+      type: array
+      items:
+        {}
+  - handle: pnl_rows
+    json_schema:
+      type: array
+      items:
+        {}
+  - handle: greeks_rows
+    json_schema:
+      type: array
+      items:
+        {}
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+icon: ":logos:python:"
+render: ./oo-render/dist/render.mjs
