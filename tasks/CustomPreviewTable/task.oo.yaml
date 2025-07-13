@@ -13,6 +13,12 @@ inputs_def:
   - handle: greeks_rows
     json_schema:
       type: array
+  - handle: column
+    json_schema:
+      type: number
+  - handle: row
+    json_schema:
+      type: number
 outputs_def:
   - handle: equity_rows
     json_schema:
@@ -32,6 +38,12 @@ outputs_def:
       type: array
       items:
         {}
+  - handle: column
+    json_schema:
+      type: number
+  - handle: row
+    json_schema:
+      type: number
 executor:
   name: python
   options:

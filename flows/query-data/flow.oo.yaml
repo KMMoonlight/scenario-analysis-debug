@@ -76,6 +76,12 @@ nodes:
         - handle: greeks_rows
           json_schema:
             type: array
+        - handle: column
+          json_schema:
+            type: number
+        - handle: row
+          json_schema:
+            type: number
       executor:
         name: python
         options:
@@ -106,8 +112,14 @@ nodes:
             output_handle: greeks_rows
       - handle: row
         value: 0
+        from_node:
+          - node_id: CustomPreviewTable#1
+            output_handle: row
       - handle: column
         value: 0
+        from_node:
+          - node_id: CustomPreviewTable#1
+            output_handle: column
     task: self::TransforToCSV
   - node_id: CustomPreviewTable#1
     task: self::CustomPreviewTable
@@ -128,3 +140,11 @@ nodes:
         from_node:
           - node_id: +python#2
             output_handle: greeks_rows
+      - handle: column
+        from_node:
+          - node_id: +python#2
+            output_handle: column
+      - handle: row
+        from_node:
+          - node_id: +python#2
+            output_handle: row

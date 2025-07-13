@@ -14,6 +14,8 @@ class Outputs(typing.TypedDict):
     contrib_rows: list[typing.Any]
     pnl_rows: list[typing.Any]
     greeks_rows: list[typing.Any]
+    column: float
+    row: float
 #endregion
 
 def main(params: Inputs, context: Context) -> Outputs:
@@ -86,7 +88,9 @@ def main(params: Inputs, context: Context) -> Outputs:
         "equity_rows": equity_rows,
         "contrib_rows": contrib_rows,
         "pnl_rows": pnl_rows,
-        "greeks_rows": greeks_rows
+        "greeks_rows": greeks_rows,
+        "row": params.get('row',0),
+        "column": params.get('column', 0)
     }
 
 
