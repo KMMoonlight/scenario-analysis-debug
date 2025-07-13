@@ -1,6 +1,6 @@
 import type { RenderContext, NodeRenderer } from "@oomol/types/render";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 import { App } from "./App";
@@ -11,10 +11,18 @@ const renderer: NodeRenderer = {
     const styleURI = context.resolveStaticResource("oo-render/dist/style.css");
 
     context.events.on("message", event => {
+      const equityDataSource = (event.payload as any)?.equity_rows
+      const contribDataSource = (event.payload as any)?.contrib_rows
+      const pnlDataSource = (event.payload as any)?.pnl_rows
+      const greeksDataSource = (event.payload as any)?.greeks_rows
+
       root.render(
         <>
           <link rel="stylesheet" href={styleURI} />
-          <App contextProps={event.payload} />
+          <App contextProps={equityDataSource} title="Equity Valuation"/>
+          <App contextProps={contribDataSource} title="Contrib"/>
+          <App contextProps={pnlDataSource} title="PnL Info"/>
+          <App contextProps={greeksDataSource} title="Greeks Info"/>
         </>
       );
     });
@@ -22,7 +30,7 @@ const renderer: NodeRenderer = {
     root.render(
       <>
         <link rel="stylesheet" href={styleURI} />
-        <App contextProps={"Empty"} />
+        <App contextProps={"Empty"} title="Empty"/>
       </>
     );
 

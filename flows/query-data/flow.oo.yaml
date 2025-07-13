@@ -48,7 +48,7 @@ nodes:
       - handle: row
         value: 0
       - handle: column
-        value: 0
+        value: 3
     task:
       ui:
         default_width: 450

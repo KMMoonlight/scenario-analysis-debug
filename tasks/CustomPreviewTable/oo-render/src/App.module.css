@@ -18,18 +18,8 @@
   width: 54px;
 }
 
-
-.tablebtn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.ml-2 {
-  margin-left: 10px;
-}
-
-.btn {
-  width: 60px;
-  margin-right: 10px;
+.title {
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
