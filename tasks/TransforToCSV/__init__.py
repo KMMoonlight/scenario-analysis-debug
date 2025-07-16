@@ -24,9 +24,6 @@ def main(params: Inputs, context: Context) -> Outputs:
     pnl_info_rows = params.get('pnl_info_rows', [])
     greeks_info_rows = params.get('greeks_info_rows', [])
 
-    print(params.get('row', 0))
-    print(params.get('column', 0))
-
     output_file_name = 'output_' +  str(params.get('row', 0)) + '_' + str(params.get('column', 0)) + '.xlsx'
 
     df_equity = pd.DataFrame(equity_valuation_rows)

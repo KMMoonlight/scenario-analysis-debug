@@ -9,6 +9,7 @@ class Inputs(typing.TypedDict):
     greeks_rows: list[typing.Any]
     column: float
     row: float
+    resource_rows: list[typing.Any]
 class Outputs(typing.TypedDict):
     equity_rows: list[typing.Any]
     contrib_rows: list[typing.Any]
@@ -24,6 +25,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     contrib_rows = params.get('contrib_rows', [])
     pnl_rows = params.get('pnl_rows', [])
     greeks_rows = params.get('greeks_rows', [])
+    resource_rows = params.get('resource_rows', [])
     row = params.get('row', 0)
     column = params.get('column', 0)
 
@@ -31,7 +33,8 @@ def main(params: Inputs, context: Context) -> Outputs:
         "equity_rows": equity_rows,
         "contrib_rows": contrib_rows,
         "pnl_rows": pnl_rows,
-        "greeks_rows": greeks_rows
+        "greeks_rows": greeks_rows,
+        "resource_rows": resource_rows
     })
 
     return { 

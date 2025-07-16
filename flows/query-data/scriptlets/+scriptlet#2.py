@@ -9,6 +9,7 @@ class Inputs(typing.TypedDict):
     result: typing.Any
     row: float
     column: float
+    from_text: bool
 class Outputs(typing.TypedDict):
     equity_rows: list[typing.Any]
     contrib_rows: list[typing.Any]
@@ -16,6 +17,7 @@ class Outputs(typing.TypedDict):
     greeks_rows: list[typing.Any]
     column: float
     row: float
+    resource_rows: list[typing.Any]
 #endregion
 
 def main(params: Inputs, context: Context) -> Outputs:
@@ -23,9 +25,29 @@ def main(params: Inputs, context: Context) -> Outputs:
     column = params.get('column', 0)
     asset_info_list = []
     position_info_list = []
+    from_text = params.get("from_text", False)
+    resource_rows = []
     
     if params['result']['code'] == 'success':
-        data = params['result']['data']['data']
+        if not from_text:
+            data = params['result']['data']['data']
+        else:
+            data = params['result']['data']
+        
+        for item in data['resource_valuation_summary']:
+            asset_base = item.get('asset_base', '-')
+            if asset_base != '-':
+                asset_base = asset_base.get('asset_base', '-')
+            cell = {
+                "resource_alias": item['resource_alias'],
+                "asset_base_str": asset_base,
+                "derivative_u_pnl": item.get('derivative_u_pnl', '-'),
+                "equity_valuation_usd": item.get('equity_valuation_usd', ''),
+                "valuation_currency": item.get('valuation_currency', ''),
+                "volatility_source": item.get('volatility_source', '')
+            }
+            resource_rows.append(cell)
+
         for row_index, item in enumerate(data['scenario_result']):
             for column_index, cell in enumerate(item.get('resource_scenario_result', [])):
                 if row_index == row and column_index == column:
@@ -90,7 +112,8 @@ def main(params: Inputs, context: Context) -> Outputs:
         "pnl_rows": pnl_rows,
         "greeks_rows": greeks_rows,
         "row": params.get('row',0),
-        "column": params.get('column', 0)
+        "column": params.get('column', 0),
+        "resource_rows": resource_rows
     }
 
 

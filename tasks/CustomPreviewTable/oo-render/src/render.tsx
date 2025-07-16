@@ -15,10 +15,12 @@ const renderer: NodeRenderer = {
       const contribDataSource = (event.payload as any)?.contrib_rows
       const pnlDataSource = (event.payload as any)?.pnl_rows
       const greeksDataSource = (event.payload as any)?.greeks_rows
+      const resourceDataSource = (event.payload as any)?.resource_rows
 
       root.render(
         <>
           <link rel="stylesheet" href={styleURI} />
+          <App contextProps={resourceDataSource} title="Fund/Account Preview"/>
           <App contextProps={equityDataSource} title="Equity Valuation"/>
           <App contextProps={contribDataSource} title="Contrib"/>
           <App contextProps={pnlDataSource} title="PnL Info"/>

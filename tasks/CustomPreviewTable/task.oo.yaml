@@ -19,6 +19,9 @@ inputs_def:
   - handle: row
     json_schema:
       type: number
+  - handle: resource_rows
+    json_schema:
+      type: array
 outputs_def:
   - handle: equity_rows
     json_schema:

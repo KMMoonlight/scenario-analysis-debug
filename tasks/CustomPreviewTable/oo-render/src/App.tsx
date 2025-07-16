@@ -35,7 +35,10 @@ export const App = ({ contextProps, title }: AppProps) => {
     return {
       code: cell, 
       name:  cell, 
-      width: 150
+      width: 150,
+      features: {
+        sortable: true
+      }
     }
   }) : []
 

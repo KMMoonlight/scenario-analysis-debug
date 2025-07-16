@@ -10,9 +10,11 @@ nodes:
           - schema:
               type: string
       - handle: use_upload_file
-        value: false
+        value: true
       - handle: upload_file_path
         value: /oomol-driver/oomol-storage/data.json
+      - handle: from_text
+        value: true
     task:
       ui:
         default_width: 450
@@ -27,11 +29,17 @@ nodes:
           json_schema:
             type: string
             ui:widget: file
+        - handle: from_text
+          json_schema:
+            type: boolean
       outputs_def:
         - handle: result
           description: Output
           json_schema:
             {}
+        - handle: from_text
+          json_schema:
+            type: boolean
       executor:
         name: python
         options:
@@ -48,7 +56,12 @@ nodes:
       - handle: row
         value: 0
       - handle: column
-        value: 3
+        value: 0
+      - handle: from_text
+        value: false
+        from_node:
+          - node_id: +python#1
+            output_handle: from_text
     task:
       ui:
         default_width: 450
@@ -63,6 +76,9 @@ nodes:
         - handle: column
           json_schema:
             type: number
+        - handle: from_text
+          json_schema:
+            type: boolean
       outputs_def:
         - handle: equity_rows
           json_schema:
@@ -82,6 +98,9 @@ nodes:
         - handle: row
           json_schema:
             type: number
+        - handle: resource_rows
+          json_schema:
+            type: array
       executor:
         name: python
         options:
@@ -148,3 +167,7 @@ nodes:
         from_node:
           - node_id: +python#2
             output_handle: row
+      - handle: resource_rows
+        from_node:
+          - node_id: +python#2
+            output_handle: resource_rows

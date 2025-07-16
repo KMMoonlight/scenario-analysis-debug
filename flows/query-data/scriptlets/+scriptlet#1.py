@@ -2,12 +2,15 @@ from oocana import Context
 import requests
 #region generated meta
 import typing
+import json
 class Inputs(typing.TypedDict):
     Cookie: str
     use_upload_file: bool
     upload_file_path: str
+    from_text: bool
 class Outputs(typing.TypedDict):
     result: typing.Any
+    from_text: bool
 #endregion
 
 def main(params: Inputs, context: Context) -> Outputs:
@@ -42,4 +45,4 @@ def main(params: Inputs, context: Context) -> Outputs:
                 "message": "Request Error"
             }
 
-    return { "result": result }
+    return { "result": result, "from_text": params.get("from_text", False) }
